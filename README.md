@@ -1,4 +1,4 @@
-# Python Code Reading Practice
+# Трейнер для развития навыков чтения Python кода / Python Code Reading Trainer
 
 ## О проекте
 
