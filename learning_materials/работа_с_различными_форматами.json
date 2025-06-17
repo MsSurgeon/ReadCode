@@ -1,0 +1,75 @@
+{
+  "topic": "Работа с различными форматами в Python",
+  "introduction": "Работа с различными форматами данных является важным аспектом программирования, так как позволяет взаимодействовать с внешними источниками информации. В Python существует несколько популярных форматов, таких как JSON, CSV и XML, которые используются для хранения и передачи данных. Понимание работы с этими форматами поможет вам эффективно обрабатывать информацию в ваших программах.",
+  "theory": {
+    "overview": "Тема включает в себя чтение и запись данных в форматах JSON, CSV и XML, а также работу с объектами Python при сериализации и десериализации. Также важным аспектом является работа с конфигурационными файлами.",
+    "best_practices": [
+      "Используйте стандартные модули Python для работы с форматами данных, такие как json, csv и xml.",
+      "Обязательно проверяйте корректность данных перед записью или чтением из файла.",
+      "Документируйте структуру данных, особенно при использовании XML.",
+      "Используйте try-except блоки для обработки исключений при работе с файлами."
+    ],
+    "common_mistakes": [
+      "Неправильное использование методов чтения/записи файлов в различных форматах.",
+      "Неправильное форматирование данных при записи, что может привести к ошибкам при чтении.",
+      "Отсутствие обработки исключений при работе с файлами, что может привести к сбоям программы."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример работы с JSON",
+      "description": "Пример демонстрирует чтение данных из JSON файла и сериализацию объекта Python в JSON.",
+      "code": "import json\n\n# Чтение данных из JSON файла\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Сериализация объекта Python в JSON\nperson = {'name': 'Alice', 'age': 30, 'city': 'New York'}\njson_data = json.dumps(person, indent=4)\n\nprint(data)\nprint(json_data)",
+      "explanation": "В данном примере мы используем модуль json для чтения данных из файла и сериализации объекта Python в формат JSON. Функция json.load() позволяет загрузить данные из файла в структуру данных Python. Функция json.dumps() преобразует объект Python в строку JSON с возможностью задать отступы для удобочитаемости."
+    },
+    {
+      "title": "Пример работы с CSV",
+      "description": "Пример демонстрирует чтение данных из CSV файла и запись данных в CSV файл.",
+      "code": "import csv\n\n# Чтение данных из CSV файла\nwith open('data.csv', 'r') as file:\n    reader = csv.reader(file)\n    for row in reader:\n        print(row)\n\n# Запись данных в CSV файл\ndata = [['Alice', 30, 'New York'], ['Bob', 25, 'Chicago']]\nwith open('output.csv', 'w', newline='') as file:\n    writer = csv.writer(file)\n    writer.writerows(data)",
+      "explanation": "В этом примере мы используем модуль csv для чтения данных из CSV файла и записи данных в CSV файл. Метод csv.reader() позволяет нам последовательно прочитать строки из файла. Метод csv.writer() позволяет записать данные в файл в формате CSV."
+    },
+    {
+      "title": "Пример работы с XML",
+      "description": "Пример демонстрирует чтение данных из XML файла с использованием xml.etree.ElementTree.",
+      "code": "import xml.etree.ElementTree as ET\n\n# Чтение данных из XML файла\ntree = ET.parse('data.xml')\nroot = tree.getroot()\nfor child in root:\n    print(child.tag, child.attrib, child.text)",
+      "explanation": "В данном примере мы используем модуль xml.etree.ElementTree для чтения данных из XML файла. Метод ET.parse() загружает XML файл в дерево элементов, а метод getroot() возвращает корневой элемент. Мы можем обходить дерево элементов и выводить информацию о каждом элементе."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "import json\n\n# Чтение данных из JSON файла\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Сериализация объекта Python в JSON\nperson = {'name': 'Alice', 'age': 30, 'city': 'New York'}\njson_data = json.dumps(person, indent=4)\n\nprint(data)\nprint(json_data)",
+        "hidden_explanation": "Этот пример демонстрирует чтение данных из JSON файла и сериализацию объекта Python в JSON с использованием модуля json.",
+        "expected_concepts": [
+          "Чтение данных из JSON файла",
+          "Сериализация объекта Python в JSON",
+          "Метод json.load()",
+          "Метод json.dumps()"
+        ],
+        "id": "работа_с_различными_форматами_в_python_ex1"
+      },
+      {
+        "code": "import csv\n\n# Чтение данных из CSV файла\nwith open('data.csv', 'r') as file:\n    reader = csv.reader(file)\n    for row in reader:\n        print(row)\n\n# Запись данных в CSV файл\ndata = [['Alice', 30, 'New York'], ['Bob', 25, 'Chicago']]\nwith open('output.csv', 'w', newline='') as file:\n    writer = csv.writer(file)\n    writer.writerows(data)",
+        "hidden_explanation": "Этот пример демонстрирует чтение данных из CSV файла и запись данных в CSV файл с использованием модуля csv.",
+        "expected_concepts": [
+          "Чтение данных из CSV файла",
+          "Запись данных в CSV файл",
+          "Метод csv.reader()",
+          "Метод csv.writer()"
+        ],
+        "id": "работа_с_различными_форматами_в_python_ex2"
+      },
+      {
+        "code": "import xml.etree.ElementTree as ET\n\n# Чтение данных из XML файла\ntree = ET.parse('data.xml')\nroot = tree.getroot()\nfor child in root:\n    print(child.tag, child.attrib, child.text)",
+        "hidden_explanation": "Этот пример демонстрирует чтение данных из XML файла с использованием модуля xml.etree.ElementTree.",
+        "expected_concepts": [
+          "Чтение данных из XML файла",
+          "Метод ET.parse()",
+          "Метод getroot()",
+          "Обход дерева элементов"
+        ],
+        "id": "работа_с_различными_форматами_в_python_ex3"
+      }
+    ]
+  }
+}

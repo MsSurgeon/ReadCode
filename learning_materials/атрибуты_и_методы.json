@@ -1,0 +1,102 @@
+{
+  "topic": "Атрибуты и методы в Python",
+  "introduction": "Атрибуты и методы - это основные строительные блоки объектно-ориентированного программирования в Python. Атрибуты представляют собой переменные, хранящие данные объекта, а методы - функции, которые могут выполнять операции с этими данными. Понимание и умение использовать атрибуты и методы является ключевым для создания эффективных и гибких классов.",
+  "theory": {
+    "overview": "В Python атрибуты и методы могут быть различных типов: методы экземпляра, методы класса, статические методы, свойства (properties) и дескрипторы. Методы экземпляра принимают self как первый аргумент и могут работать с данными конкретного экземпляра. Методы класса используют cls в качестве первого аргумента и могут работать с данными класса. Статические методы не привязаны к экземпляру или классу и могут использоваться независимо. Свойства позволяют контролировать доступ к атрибутам объекта, а дескрипторы предоставляют специальный протокол для управления доступом к атрибутам.",
+    "best_practices": [
+      "Имена атрибутов и методов следует выбирать осмысленно и согласно соглашениям по именованию в Python (PEP 8).",
+      "Используйте методы экземпляра для операций, специфичных для конкретного объекта, и методы класса для операций, связанных с классом в целом.",
+      "Статические методы полезны для функциональности, не привязанной к конкретному объекту или классу.",
+      "Свойства и дескрипторы могут обеспечить дополнительный контроль над доступом к данным объекта."
+    ],
+    "common_mistakes": [
+      "Неправильное использование self или cls в методах класса и статических методах соответственно.",
+      "Недостаточное использование свойств и дескрипторов для контроля доступа к атрибутам.",
+      "Избегайте конфликтов имен атрибутов с встроенными методами Python."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример 1: Метод экземпляра",
+      "description": "Определение класса с методом экземпляра и его использование.",
+      "code": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f'Привет, меня зовут {self.name}'\n\n# Создание экземпляра класса\nperson = Person('Alice')\nprint(person.greet())",
+      "explanation": "В данном примере у класса Person есть метод экземпляра greet(), который использует атрибут name объекта для создания приветственного сообщения."
+    },
+    {
+      "title": "Пример 2: Метод класса",
+      "description": "Использование метода класса для отслеживания количества созданных объектов.",
+      "code": "class Dog:\n    count = 0\n\n    def __init__(self, name):\n        self.name = name\n        Dog.count += 1\n\n    @classmethod\n    def get_count(cls):\n        return cls.count\n\n# Создание нескольких экземпляров класса\ndog1 = Dog('Buddy')\ndog2 = Dog('Max')\nprint(Dog.get_count())",
+      "explanation": "Здесь метод get_count() класса Dog используется для возвращения общего количества созданных экземпляров класса."
+    },
+    {
+      "title": "Пример 3: Статический метод",
+      "description": "Использование статического метода для преобразования данных.",
+      "code": "class MathUtils:\n    @staticmethod\n    def multiply(x, y):\n        return x * y\n\n# Вызов статического метода без создания экземпляра класса\nresult = MathUtils.multiply(5, 3)\nprint(result)",
+      "explanation": "Метод multiply() класса MathUtils является статическим и может быть вызван непосредственно от класса, без создания объекта."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n\n    @property\n    def description(self):\n        return f'This is a {self.brand} car'\n\n# Create an instance of the class\ncar = Car('Toyota')\nprint(car.description)",
+        "hidden_explanation": "Класс Car определяет атрибут brand, и метод description, который возвращает описание машины с указанием бренда. Создается экземпляр класса Car с брендом 'Toyota' и выводится описание этой машины.",
+        "expected_concepts": [
+          "Свойства (properties)",
+          "Инициализация атрибутов в конструкторе",
+          "Использование self",
+          "Методы класса",
+          "Использование f-строк"
+        ],
+        "id": "атрибуты_и_методы_в_python_ex1"
+      },
+      {
+        "code": "class Circle:\n    pi = 3.14\n\n    def __init__(self, radius):\n        self.radius = radius\n\n    @staticmethod\n    def calculate_area(radius):\n        return Circle.pi * radius**2\n\n# Call the static method\narea = Circle.calculate_area(5)\nprint(area)",
+        "hidden_explanation": "Класс Circle определяет статический метод calculate_area для вычисления площади круга по радиусу. Вызывается статический метод для вычисления площади круга с радиусом 5 и выводится результат.",
+        "expected_concepts": [
+          "Статические методы",
+          "Использование классов внутри методов",
+          "Использование атрибутов класса",
+          "Методы для конкретных операций",
+          "Использование @staticmethod"
+        ],
+        "id": "атрибуты_и_методы_в_python_ex2"
+      },
+      {
+        "code": "class BankAccount:\n    interest_rate = 0.05\n\n    def __init__(self, balance):\n        self.balance = balance\n\n    @classmethod\n    def add_interest(cls, balance):\n        return balance * (1 + cls.interest_rate)\n\n# Calculate the new balance with interest\nnew_balance = BankAccount.add_interest(1000)\nprint(new_balance)",
+        "hidden_explanation": "Класс BankAccount определяет метод класса add_interest для вычисления нового баланса с учетом процентной ставки. Вызывается метод класса для вычисления нового баланса с начальным балансом 1000 и выводится результат.",
+        "expected_concepts": [
+          "Методы класса",
+          "Использование классов внутри методов",
+          "Использование @classmethod",
+          "Обработка данных класса",
+          "Работа с атрибутами класса"
+        ],
+        "id": "атрибуты_и_методы_в_python_ex3"
+      },
+      {
+        "code": "class Employee:\n    employee_count = 0\n\n    def __init__(self, name):\n        self.name = name\n        Employee.employee_count += 1\n\n    @classmethod\n    def get_employee_count(cls):\n        return cls.employee_count\n\n# Create multiple instances of the class\nemployee1 = Employee('Alice')\nemployee2 = Employee('Bob')\nprint(Employee.get_employee_count())",
+        "hidden_explanation": "Класс Employee отслеживает количество созданных сотрудников с помощью классового атрибута и метода класса. Создаются несколько экземпляров класса Employee, и выводится общее количество сотрудников.",
+        "expected_concepts": [
+          "Методы класса",
+          "Использование классов внутри методов",
+          "Использование @classmethod",
+          "Отслеживание данных класса",
+          "Инкрементация значений"
+        ],
+        "id": "атрибуты_и_методы_в_python_ex4"
+      },
+      {
+        "code": "class Animal:\n    def __init__(self, species):\n        self.species = species\n\n    def display_species(self):\n        return f'This animal belongs to the {self.species} species'\n\n# Create an instance of the class\nanimal = Animal('Lion')\nprint(animal.display_species())",
+        "hidden_explanation": "Класс Animal хранит информацию о виде животного и имеет метод display_species для вывода информации о виде. Создается экземпляр класса Animal с видом 'Lion' и выводится сообщение о принадлежности этого животного к определенному виду.",
+        "expected_concepts": [
+          "Методы экземпляра",
+          "Инициализация атрибутов в конструкторе",
+          "Использование self",
+          "Вывод информации о данных объекта",
+          "Использование f-строк"
+        ],
+        "id": "атрибуты_и_методы_в_python_ex5"
+      }
+    ]
+  }
+}

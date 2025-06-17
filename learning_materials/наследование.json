@@ -1,0 +1,86 @@
+{
+  "topic": "Наследование в Python",
+  "introduction": "Наследование - это механизм в объектно-ориентированном программировании, который позволяет создавать иерархии классов, где дочерние классы наследуют атрибуты и методы родительских классов. Это позволяет создавать более структурированный и модульный код, повторно используя функциональность уже существующих классов.",
+  "theory": {
+    "overview": "Наследование в Python позволяет создавать иерархии классов, где дочерние классы могут наследовать атрибуты и методы родительских классов. Python поддерживает одиночное и множественное наследование, а также позволяет переопределять методы родительских классов в дочерних классах. Для вызова методов родительского класса используется функция super(). Понимание порядка разрешения методов (MRO) важно для правильного использования наследования.",
+    "best_practices": [
+      "Используйте наследование для повторного использования кода и создания иерархий классов.",
+      "Переопределяйте методы родительских классов в дочерних классах только при необходимости.",
+      "Используйте super() для вызова методов родительского класса в дочернем классе.",
+      "Понимайте порядок разрешения методов (MRO) для корректного использования наследования."
+    ],
+    "common_mistakes": [
+      "Избегайте излишнего использования наследования, когда композиция более подходит для решения задачи.",
+      "Не забывайте о порядке разрешения методов (MRO), чтобы избежать неожиданного поведения в программах."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример одиночного наследования",
+      "description": "Демонстрирует создание дочернего класса, который наследует атрибуты и методы родительского класса.",
+      "code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def make_sound(self):\n        pass\n\n\nclass Dog(Animal): # Дочерний класс Dog наследует класс Animal\n    def make_sound(self):\n        return 'Woof!'\n\n# Создание экземпляра класса Dog\ndog = Dog('Buddy')\nprint(dog.make_sound())",
+      "explanation": "В данном примере создается класс Animal с атрибутом name и методом make_sound. Затем создается дочерний класс Dog, который наследует класс Animal. В дочернем классе переопределяется метод make_sound. При создании экземпляра класса Dog и вызове метода make_sound будет возвращено 'Woof!', потому что метод переопределен в дочернем классе."
+    },
+    {
+      "title": "Пример множественного наследования",
+      "description": "Показывает использование множественного наследования, когда дочерний класс наследует атрибуты и методы нескольких родительских классов.",
+      "code": "class A:\n    def method_a(self):\n        return 'Method A'\n\n\nclass B:\n    def method_b(self):\n        return 'Method B'\n\n\nclass C(A, B): # Дочерний класс C наследует классы A и B\n    pass\n\n# Создание экземпляра класса C\nc = C()\nprint(c.method_a())\nprint(c.method_b())",
+      "explanation": "В данном примере создаются классы A и B с методами method_a и method_b соответственно. Затем создается класс C, который наследует классы A и B. При создании экземпляра класса C можно вызывать как метод method_a из класса A, так и метод method_b из класса B."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def make_sound(self):\n        pass\n\nclass Dog(Animal): # Дочерний класс Dog наследует класс Animal\n    def make_sound(self):\n        return 'Woof!'\n\ndog = Dog('Buddy')\nprint(dog.make_sound())",
+        "hidden_explanation": "В данном примере создается класс Animal с атрибутом name и методом make_sound. Затем создается дочерний класс Dog, который наследует класс Animal. При создании экземпляра класса Dog и вызове метода make_sound будет возвращено 'Woof!', потому что метод переопределен в дочернем классе.",
+        "expected_concepts": [
+          "Наследование",
+          "Дочерний класс",
+          "Переопределение методов",
+          "Создание экземпляра класса"
+        ],
+        "id": "наследование_в_python_ex1"
+      },
+      {
+        "code": "class A:\n    def method_a(self):\n        return 'Method A'\n\nclass B:\n    def method_b(self):\n        return 'Method B'\n\nclass C(A, B): # Дочерний класс C наследует классы A и B\n    pass\n\nc = C()\nprint(c.method_a())\nprint(c.method_b())",
+        "hidden_explanation": "В данном примере создаются классы A и B с методами method_a и method_b соответственно. Затем создается класс C, который наследует классы A и B. При создании экземпляра класса C можно вызывать как метод method_a из класса A, так и метод method_b из класса B.",
+        "expected_concepts": [
+          "Множественное наследование",
+          "Родительские классы",
+          "Вызов методов родительских классов"
+        ],
+        "id": "наследование_в_python_ex2"
+      },
+      {
+        "code": "class Shape:\n    def __init__(self, color):\n        self.color = color\n    \n    def area(self):\n        pass\n\nclass Circle(Shape): # Дочерний класс Circle наследует класс Shape\n    def __init__(self, color, radius):\n        super().__init__(color)\n        self.radius = radius\n    \n    def area(self):\n        return 3.14 * self.radius**2\n\ncircle = Circle('red', 5)\nprint(circle.area())",
+        "hidden_explanation": "В данном примере создается класс Shape с методом area для вычисления площади. Затем создается дочерний класс Circle, который наследует класс Shape и переопределяет метод area для вычисления площади круга. При создании экземпляра класса Circle и вызове метода area будет возвращена площадь круга с радиусом 5 и цветом 'red'.",
+        "expected_concepts": [
+          "Вызов метода super()",
+          "Переопределение метода",
+          "Использование родительского конструктора"
+        ],
+        "id": "наследование_в_python_ex3"
+      },
+      {
+        "code": "class Vehicle:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def drive(self):\n        pass\n\nclass Car(Vehicle): # Дочерний класс Car наследует класс Vehicle\n    def drive(self):\n        return 'Driving a car'\n\nclass Boat(Vehicle): # Дочерний класс Boat наследует класс Vehicle\n    def drive(self):\n        return 'Sailing a boat'\n\ncar = Car('Toyota')\nboat = Boat('Yamaha')\nprint(car.drive())\nprint(boat.drive())",
+        "hidden_explanation": "В данном примере создаются классы Vehicle, Car и Boat. Класс Vehicle имеет метод drive, который не реализован. Классы Car и Boat наследуют класс Vehicle и переопределяют метод drive для вывода информации о движении автомобиля и лодки соответственно. При создании экземпляров классов Car и Boat и вызове метода drive будет выведена соответствующая информация.",
+        "expected_concepts": [
+          "Наследование",
+          "Переопределение методов",
+          "Использование методов родительского класса"
+        ],
+        "id": "наследование_в_python_ex4"
+      },
+      {
+        "code": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def info(self):\n        return f'{self.name} is {self.age} years old'\n\nclass Student(Person): # Дочерний класс Student наследует класс Person\n    def __init__(self, name, age, grade):\n        super().__init__(name, age)\n        self.grade = grade\n    \n    def info(self):\n        return f'{self.name} is {self.age} years old and is in grade {self.grade}'\n\nstudent = Student('Alice', 15, 10)\nprint(student.info())",
+        "hidden_explanation": "В данном примере создаются классы Person и Student. Класс Person имеет атрибуты name и age, а также метод info для вывода информации о человеке. Класс Student наследует класс Person, добавляет атрибут grade и переопределяет метод info для вывода информации о студенте с учетом его класса. При создании экземпляра класса Student и вызове метода info будет выведена информация о студенте Alice, ее возрасте и классе.",
+        "expected_concepts": [
+          "Переопределение метода",
+          "Использование метода super()",
+          "Наследование атрибутов"
+        ],
+        "id": "наследование_в_python_ex5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+<div class="skills-navigation">
+    <h2>Skills</h2>
+    <ul class="skill-list">
+        {% for category in skills %}
+            <li class="category">
+                <span class="category-name">{{ category.name }}</span>
+                <ul class="skill-items">
+                    {% for skill in category.skills %}
+                        <li class="skill-item
+                            {% if skill.name in progress.completed_skills %}completed
+                            {% elif skill.name == progress.current_skill %}current{% endif %}">
+                            <a href="{{ url_for('skill', skill_name=skill.name) }}">
+                                {{ skill.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

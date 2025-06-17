@@ -1,0 +1,58 @@
+{
+  "topic": "Декораторы в Python",
+  "introduction": "Декораторы - это мощный инструмент в Python, который позволяет модифицировать поведение функций и классов без изменения их исходного кода. Они позволяют добавлять дополнительную функциональность к существующим объектам, делая код более гибким и удобочитаемым.",
+  "theory": {
+    "overview": "Декораторы представляют собой функции, которые принимают другую функцию в качестве аргумента и возвращают новую функцию. Они обычно используются для изменения поведения функции или метода без изменения самой функции. Декораторы можно применять к функциям и методам классов.",
+    "best_practices": [
+      "Используйте декораторы для добавления поведения к функциям без изменения их исходного кода.",
+      "Избегайте избыточного использования декораторов, так как это может усложнить код.",
+      "Помните, что порядок применения декораторов имеет значение."
+    ],
+    "common_mistakes": [
+      "Неправильное применение декораторов к функциям без необходимости.",
+      "Забывать вызывать декорируемую функцию внутри декоратора.",
+      "Использование декораторов с побочными эффектами, которые могут привести к нежелательным результатам."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример применения декоратора в Python",
+      "description": "Декоратор для измерения времени выполнения функции",
+      "code": "import time\n\ndef timer_decorator(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        print(f'Время выполнения функции {func.__name__}: {end_time - start_time} сек.')\n        return result\n    return wrapper\n\n@timer_decorator\n def some_function():\n     # Код функции\n     pass\n\nsome_function()",
+      "explanation": "В данном примере создается декоратор timer_decorator, который измеряет время выполнения функции, к которой он применен. При вызове функции some_function декоратор автоматически измеряет время выполнения и выводит результат."
+    },
+    {
+      "title": "Пример использования встроенного декоратора @property",
+      "description": "Декоратор @property для создания свойства объекта",
+      "code": "class Circle:\n    def __init__(self, radius):\n        self.radius = radius\n\n    @property\n    def area(self):\n        return 3.14 * self.radius ** 2\n\nmy_circle = Circle(5)\nprint(my_circle.area)",
+      "explanation": "В данном примере создается класс Circle с методом area, который вычисляет площадь круга. Декоратор @property позволяет обращаться к методу area как к атрибуту объекта без явного вызова метода."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "def timer_decorator(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        print(f'Время выполнения функции {func.__name__}: {end_time - start_time} сек.')\n        return result\n    return wrapper\n\n@timer_decorator\ndef some_function():\n    # Код функции\n    pass\n\nsome_function()",
+        "hidden_explanation": "Декоратор timer_decorator позволяет измерить и вывести на экран время выполнения функции some_function. При вызове some_function декоратор автоматически запускает измерение времени выполнения и выводит результат.",
+        "expected_concepts": [
+          "Декораторы в Python",
+          "Функции как объекты",
+          "Использование *args и **kwargs",
+          "Форматирование строк f-strings"
+        ],
+        "id": "декораторы_в_python_ex1"
+      },
+      {
+        "code": "class Circle:\n    def __init__(self, radius):\n        self.radius = radius\n\n    @property\n    def area(self):\n        return 3.14 * self.radius ** 2\n\nmy_circle = Circle(5)\nprint(my_circle.area)",
+        "hidden_explanation": "Класс Circle имеет метод area, который вычисляет площадь круга на основе заданного радиуса. Декоратор @property позволяет обращаться к методу area как к атрибуту объекта без явного вызова метода.",
+        "expected_concepts": [
+          "Декоратор @property",
+          "Классы в Python",
+          "Методы класса",
+          "Инициализация объекта с атрибутами",
+          "Вычисление площади круга"
+        ],
+        "id": "декораторы_в_python_ex2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="skill-page">
+    <div class="practice-exercise">
+        <h2>Практика: {{ material.topic }}</h2>
+        <h3>Практическое задание</h3>
+        <p>Прочитайте следующий код и объясните, что он делает:</p>
+
+        <pre id="exercise-code"><code>{{ exercise.code }}</code></pre>
+
+        <form id="answer-form">
+            <input type="hidden" name="skill_name" value="{{ material.topic }}">
+            <input type="hidden" name="exercise_code" value="{{ exercise.code }}">
+            <input type="hidden" name="exercise_id" value="{{ exercise.id }}">
+
+            <input type="hidden" id="current_skill_name" name="skill_name" value="{{ skill_name }}">
+
+            <div class="form-group">
+                <label for="explanation">Ваше объяснение:</label>
+                <textarea id="explanation" name="explanation" rows="6" required></textarea>
+            </div>
+        </form>
+
+        <div class="button-container">
+            <button id="submit-btn" type="submit" class="btn primary" form="answer-form">Проверить</button>
+            <a href="{{ url_for('skill', skill_name=exercise.skill_name) }}" class="btn secondary">Вернуться к материалу</a>
+        </div>
+
+        <div id="feedback" class="feedback hidden"></div>
+
+        <div class="button-container hidden" id="next-buttons">
+            <button id="next-exercise" class="btn primary hidden">Следующее задание</button>
+            <a id="next-skill" href="#" class="btn primary hidden">Перейти к следующему навыку</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

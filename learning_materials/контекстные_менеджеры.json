@@ -1,0 +1,85 @@
+{
+  "topic": "Контекстные менеджеры в Python",
+  "introduction": "Контекстные менеджеры - это мощный инструмент в Python, который позволяет управлять ресурсами, обрабатывать исключения и временно изменять состояние. Они обеспечивают удобную и безопасную работу с ресурсами, такими как файлы, сетевые соединения и базы данных. В этом учебном материале мы рассмотрим создание собственных контекстных менеджеров с использованием протокола __enter__ и __exit__ или модуля contextlib, а также применение контекстных менеджеров в различных сценариях.",
+  "theory": {
+    "overview": "Контекстные менеджеры в Python позволяют определить выполнение кода в определенном контексте, гарантируя правильное открытие и закрытие ресурсов. Они особенно полезны для управления файлами, сетевыми соединениями и другими ресурсами, где необходимо обеспечить корректное завершение операций.",
+    "best_practices": [
+      "Обязательно закрывайте все ресурсы в блоке контекстного менеджера",
+      "Используйте контекстные менеджеры для обработки исключений и управления ресурсами",
+      "Предпочитайте использование with выражения для работы с контекстными менеджерами"
+    ],
+    "common_mistakes": [
+      "Не вызывать метод close() для ресурсов внутри контекстного менеджера",
+      "Излишнее усложнение логики внутри контекстного менеджера",
+      "Использование контекстного менеджера без понимания его работы"
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример 1: Создание контекстного менеджера с помощью класса",
+      "description": "Данный пример показывает создание собственного контекстного менеджера с использованием класса и протоколов __enter__ и __exit__.",
+      "code": "class MyContextManager:\n    def __enter__(self):\n        print('Запуск контекстного менеджера')\n        return self\n    \n    def __exit__(self, exc_type, exc_value, traceback):\n        print('Завершение контекстного менеджера')\n\nwith MyContextManager() as manager:\n    print('Внутри контекстного менеджера')",
+      "explanation": "В данном примере класс MyContextManager определяет методы __enter__ и __exit__, которые выполняются при входе и выходе из контекста соответственно. При использовании with выражения создается экземпляр класса MyContextManager, который автоматически вызывает методы __enter__ и __exit__."
+    },
+    {
+      "title": "Пример 2: Использование контекстного менеджера для работы с файлами",
+      "description": "Этот пример демонстрирует использование контекстного менеджера для безопасного чтения и записи файлов.",
+      "code": "with open('example.txt', 'w') as file:\n    file.write('Hello, World!')\n\nwith open('example.txt', 'r') as file:\n    content = file.read()\n    print(content)",
+      "explanation": "В данном примере блок with открывает файл example.txt для записи данных, а затем автоматически закрывает его после завершения блока. После этого файл снова открывается для чтения, и его содержимое выводится на экран."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "class MyContextManager:\n    def __enter__(self):\n        print('Start context manager')\n        return self\n    \n    def __exit__(self, exc_type, exc_value, traceback):\n        print('End context manager')\n\nwith MyContextManager() as manager:\n    print('Inside context manager')",
+        "hidden_explanation": "Создается собственный контекстный менеджер с методами __enter__ и __exit__, который выводит сообщения при входе и выходе из контекста. При использовании with выражения создается экземпляр класса MyContextManager.",
+        "expected_concepts": [
+          "Контекстные менеджеры",
+          "Методы __enter__ и __exit__",
+          "Использование with выражения"
+        ],
+        "id": "контекстные_менеджеры_в_python_ex1"
+      },
+      {
+        "code": "with open('example.txt', 'w') as file:\n    file.write('Hello, World!')\n\nwith open('example.txt', 'r') as file:\n    content = file.read()\n    print(content)",
+        "hidden_explanation": "Открывается файл для записи и записывается строка 'Hello, World!', затем файл открывается для чтения и содержимое выводится на экран.",
+        "expected_concepts": [
+          "Работа с файлами",
+          "Открытие и закрытие файлов",
+          "Использование with выражения"
+        ],
+        "id": "контекстные_менеджеры_в_python_ex2"
+      },
+      {
+        "code": "import time\n\nclass Timer:\n    def __enter__(self):\n        self.start_time = time.time()\n        return self\n    \n    def __exit__(self, exc_type, exc_value, traceback):\n        end_time = time.time()\n        print(f'Execution time: {end_time - self.start_time} seconds')\n\nwith Timer() as timer:\n    time.sleep(2)",
+        "hidden_explanation": "Создается контекстный менеджер для измерения времени выполнения кода. При входе сохраняется стартовое время, а при выходе вычисляется и выводится общее время выполнения.",
+        "expected_concepts": [
+          "Контекстный менеджер для измерения времени",
+          "Методы __enter__ и __exit__",
+          "Использование time модуля"
+        ],
+        "id": "контекстные_менеджеры_в_python_ex3"
+      },
+      {
+        "code": "class DatabaseConnection:\n    def __enter__(self):\n        self.connection = connect_to_database()\n        return self.connection\n    \n    def __exit__(self, exc_type, exc_value, traceback):\n        self.connection.close()\n\nwith DatabaseConnection() as db:\n    data = db.query('SELECT * FROM table')",
+        "hidden_explanation": "Создается контекстный менеджер для работы с базой данных. При входе устанавливается соединение, а при выходе оно закрывается.",
+        "expected_concepts": [
+          "Работа с базой данных",
+          "Установка и закрытие соединения",
+          "Использование with выражения"
+        ],
+        "id": "контекстные_менеджеры_в_python_ex4"
+      },
+      {
+        "code": "from contextlib import contextmanager\n\n@contextmanager\n    def tag(tag_name):\n        print(f'<{tag_name}>')\n        yield\n        print(f'</{tag_name}>')\n\nwith tag('div'):\n    print('Hello, World!')",
+        "hidden_explanation": "Используется контекстный менеджер для создания HTML-тега. При входе и выходе из контекста выводятся открывающий и закрывающий теги.",
+        "expected_concepts": [
+          "Модуль contextlib",
+          "Декоратор @contextmanager",
+          "Использование yield в контекстном менеджере"
+        ],
+        "id": "контекстные_менеджеры_в_python_ex5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика чтения кода Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Практика чтения кода Python</h1>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                {% include 'progress_dashboard.html' %}
+                {% include 'skills_navigation.html' %}
+            </div>
+
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Практика чтения кода Python</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

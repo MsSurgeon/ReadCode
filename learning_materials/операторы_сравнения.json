@@ -1,0 +1,93 @@
+{
+  "topic": "Операторы сравнения в Python",
+  "introduction": "Операторы сравнения в Python играют важную роль при сравнении значений и получении логических результатов. Они позволяют сравнивать значения на равенство, неравенство, больше, меньше, больше или равно, меньше или равно. Понимание особенностей сравнения различных типов данных и объектов в Python поможет в правильной работе с условиями в программах.",
+  "theory": {
+    "overview": "Операторы сравнения в Python позволяют сравнивать значения и получать логические результаты. Они используются в условных операторах для принятия решений на основе сравнения значений.",
+    "best_practices": [
+      "Используйте операторы сравнения в сочетании с условными операторами для более гибкого управления потоком программы.",
+      "Помните о приоритете операторов сравнения в выражениях, используйте скобки для явного указания порядка выполнения операций."
+    ],
+    "common_mistakes": [
+      "Сравнение различных типов данных может привести к неожиданным результатам, будьте внимательны при сравнении.",
+      "Некорректное использование операторов сравнения с объектами может привести к ошибкам в программе."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример сравнения чисел",
+      "description": "Пример сравнения двух чисел с использованием операторов сравнения.",
+      "code": "x = 5\ny = 10\n\n# Сравнение x и y на равенство\nresult_equal = x == y\n\n# Сравнение x и y на неравенство\nresult_not_equal = x != y\n\n# Сравнение x и y на больше\nresult_greater = x > y\n\n# Сравнение x и y на меньше\nresult_less = x < y\n\n# Сравнение x и y на больше или равно\nresult_greater_equal = x >= y\n\n# Сравнение x и y на меньше или равно\nresult_less_equal = x <= y",
+      "explanation": "В данном примере переменные x и y инициализируются значениями 5 и 10 соответственно. Затем с помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих значений. Результаты операций сохраняются в соответствующих переменных result_equal, result_not_equal, result_greater, result_less, result_greater_equal, result_less_equal."
+    },
+    {
+      "title": "Пример сравнения строк",
+      "description": "Пример сравнения двух строк с использованием операторов сравнения.",
+      "code": "str1 = 'apple'\nstr2 = 'banana'\n\n# Сравнение str1 и str2 на равенство\nresult_equal_str = str1 == str2\n\n# Сравнение str1 и str2 на неравенство\nresult_not_equal_str = str1 != str2\n\n# Сравнение str1 и str2 на больше (по алфавиту)\nresult_greater_str = str1 > str2\n\n# Сравнение str1 и str2 на меньше (по алфавиту)\nresult_less_str = str1 < str2\n\n# Сравнение str1 и str2 на больше или равно (по алфавиту)\nresult_greater_equal_str = str1 >= str2\n\n# Сравнение str1 и str2 на меньше или равно (по алфавиту)\nresult_less_equal_str = str1 <= str2",
+      "explanation": "В этом примере переменные str1 и str2 содержат строки 'apple' и 'banana' соответственно. С помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих строк как текстовых значений. Результаты операций сохраняются в переменных result_equal_str, result_not_equal_str, result_greater_str, result_less_str, result_greater_equal_str, result_less_equal_str."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "a = 10\nb = 20\n\nresult_equal = a == b\nresult_not_equal = a != b\nresult_greater = a > b\nresult_less = a < b\nresult_greater_equal = a >= b\nresult_less_equal = a <= b",
+        "hidden_explanation": "В данном примере переменные a и b инициализируются значениями 10 и 20 соответственно. Затем с помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих значений.",
+        "expected_concepts": [
+          "Операторы сравнения",
+          "Сравнение чисел",
+          "Равенство и неравенство",
+          "Больше и меньше",
+          "Больше или равно и меньше или равно"
+        ],
+        "id": "операторы_сравнения_в_python_ex1"
+      },
+      {
+        "code": "str1 = 'python'\nstr2 = 'java'\n\nresult_equal_str = str1 == str2\nresult_not_equal_str = str1 != str2\nresult_greater_str = str1 > str2\nresult_less_str = str1 < str2\nresult_greater_equal_str = str1 >= str2\nresult_less_equal_str = str1 <= str2",
+        "hidden_explanation": "В этом примере переменные str1 и str2 содержат строки 'python' и 'java' соответственно. С помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих строк как текстовых значений.",
+        "expected_concepts": [
+          "Операторы сравнения",
+          "Сравнение строк",
+          "Равенство и неравенство",
+          "Больше и меньше (по алфавиту)",
+          "Больше или равно и меньше или равно (по алфавиту)"
+        ],
+        "id": "операторы_сравнения_в_python_ex2"
+      },
+      {
+        "code": "num1 = 5\nnum2 = 5.5\n\nresult_equal_float = num1 == num2\nresult_not_equal_float = num1 != num2\nresult_greater_float = num1 > num2\nresult_less_float = num1 < num2\nresult_greater_equal_float = num1 >= num2\nresult_less_equal_float = num1 <= num2",
+        "hidden_explanation": "В данном примере переменные num1 и num2 содержат числа 5 и 5.5 соответственно. С помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих чисел.",
+        "expected_concepts": [
+          "Операторы сравнения",
+          "Сравнение чисел",
+          "Равенство и неравенство",
+          "Больше и меньше",
+          "Больше или равно и меньше или равно"
+        ],
+        "id": "операторы_сравнения_в_python_ex3"
+      },
+      {
+        "code": "list1 = [1, 2, 3]\nlist2 = [1, 2, 3, 4]\n\nresult_equal_list = list1 == list2\nresult_not_equal_list = list1 != list2\nresult_greater_list = list1 > list2\nresult_less_list = list1 < list2\nresult_greater_equal_list = list1 >= list2\nresult_less_equal_list = list1 <= list2",
+        "hidden_explanation": "В данном примере переменные list1 и list2 содержат списки [1, 2, 3] и [1, 2, 3, 4] соответственно. С помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих списков.",
+        "expected_concepts": [
+          "Операторы сравнения",
+          "Сравнение списков",
+          "Равенство и неравенство",
+          "Больше и меньше (по элементам)",
+          "Больше или равно и меньше или равно (по элементам)"
+        ],
+        "id": "операторы_сравнения_в_python_ex4"
+      },
+      {
+        "code": "tuple1 = (1, 2, 3)\ntuple2 = (1, 2, 3, 4)\n\nresult_equal_tuple = tuple1 == tuple2\nresult_not_equal_tuple = tuple1 != tuple2\nresult_greater_tuple = tuple1 > tuple2\nresult_less_tuple = tuple1 < tuple2\nresult_greater_equal_tuple = tuple1 >= tuple2\nresult_less_equal_tuple = tuple1 <= tuple2",
+        "hidden_explanation": "В данном примере переменные tuple1 и tuple2 содержат кортежи (1, 2, 3) и (1, 2, 3, 4) соответственно. С помощью операторов сравнения ==, !=, >, <, >=, <= происходит сравнение этих кортежей.",
+        "expected_concepts": [
+          "Операторы сравнения",
+          "Сравнение кортежей",
+          "Равенство и неравенство",
+          "Больше и меньше (по элементам)",
+          "Больше или равно и меньше или равно (по элементам)"
+        ],
+        "id": "операторы_сравнения_в_python_ex5"
+      }
+    ]
+  }
+}

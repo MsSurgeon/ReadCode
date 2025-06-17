@@ -1,0 +1,89 @@
+{
+  "topic": "Полиморфизм в Python",
+  "introduction": "Полиморфизм - это принцип ООП, который позволяет объектам разных классов иметь одинаковый интерфейс. Это делает код более гибким и расширяемым. В Python полиморфизм реализуется через перегрузку методов, утиную типизацию, абстрактные базовые классы (ABC) и интерфейсы.",
+  "theory": {
+    "overview": "Полиморфизм в Python позволяет использовать один и тот же метод или функцию для объектов разных классов. Это упрощает написание кода и делает его более читаемым. Полиморфизм включает в себя перегрузку методов, утиную типизацию, абстрактные базовые классы (ABC) и интерфейсы.",
+    "best_practices": [
+      "Используйте полиморфизм для упрощения кода и улучшения его читаемости.",
+      "Используйте абстрактные базовые классы (ABC) для определения общего интерфейса для подклассов.",
+      "Избегайте сложной логики в перегруженных методах, они должны быть простыми и понятными."
+    ],
+    "common_mistakes": [
+      "Недостаточно понимать концепцию полиморфизма и его применение.",
+      "Использование полиморфизма без необходимости, что может усложнить код."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример полиморфизма через перегрузку методов",
+      "description": "Пример показывает как перегрузить методы в Python для объектов разных классов.",
+      "code": "class Animal:\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return 'Woof!'\n\nclass Cat(Animal):\n    def speak(self):\n        return 'Meow!'\n\nanimals = [Dog(), Cat()]\nfor animal in animals:\n    print(animal.speak())",
+      "explanation": "В данном примере у нас есть базовый класс Animal с методом speak, который мы перегружаем в классах Dog и Cat. При создании списка animals с объектами Dog и Cat и последующем вызове метода speak для каждого объекта, мы получаем соответствующие звуки 'Woof!' и 'Meow!'. Это демонстрирует принцип полиморфизма, где метод speak имеет разную реализацию для объектов разных классов."
+    },
+    {
+      "title": "Пример полиморфизма через абстрактные базовые классы (ABC)",
+      "description": "Пример показывает как использовать абстрактные базовые классы для создания общего интерфейса.",
+      "code": "from abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n    \n    def area(self):\n        return 3.14 * self.radius ** 2\n\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    \n    def area(self):\n        return self.side ** 2",
+      "explanation": "В этом примере у нас есть абстрактный класс Shape с абстрактным методом area. Мы создаем подклассы Circle и Square, которые реализуют этот метод. При создании объектов Circle и Square и вызове метода area, каждый из них возвращает площадь своей фигуры. Это демонстрирует использование абстрактных базовых классов для определения общего интерфейса, который должны реализовать подклассы."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "class Vehicle:\n    def drive(self):\n        pass\n\nclass Car(Vehicle):\n    def drive(self):\n        return 'Driving a car'\n\nclass Bike(Vehicle):\n    def drive(self):\n        return 'Riding a bike'\n\nvehicles = [Car(), Bike()]\nfor vehicle in vehicles:\n    print(vehicle.drive())",
+        "hidden_explanation": "Данный пример демонстрирует полиморфизм в Python через перегрузку методов. У нас есть базовый класс Vehicle с методом drive, который перегружается в классах Car и Bike. Создается список vehicles с объектами Car и Bike, после чего для каждого объекта вызывается метод drive, который возвращает соответствующее сообщение о движении.",
+        "expected_concepts": [
+          "Полиморфизм через перегрузку методов",
+          "Базовый класс и наследование",
+          "Создание объектов разных классов",
+          "Использование списка объектов для демонстрации полиморфизма"
+        ],
+        "id": "полиморфизм_в_python_ex1"
+      },
+      {
+        "code": "from abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n\nclass Triangle(Shape):\n    def __init__(self, base, height):\n        self.base = base\n        self.height = height\n    \n    def area(self):\n        return 0.5 * self.base * self.height\n\nclass Rectangle(Shape):\n    def __init__(self, length, width):\n        self.length = length\n        self.width = width\n    \n    def area(self):\n        return self.length * self.width",
+        "hidden_explanation": "В данном примере используется полиморфизм через абстрактные базовые классы (ABC). У нас есть абстрактный класс Shape с абстрактным методом area, который реализуется в подклассах Triangle и Rectangle для вычисления площади фигур. При создании объектов Triangle и Rectangle и вызове метода area, каждый из них вернет площадь своей фигуры.",
+        "expected_concepts": [
+          "Полиморфизм через абстрактные базовые классы (ABC)",
+          "Абстрактные методы и классы",
+          "Реализация общего интерфейса в подклассах",
+          "Вызов методов унаследованных классов"
+        ],
+        "id": "полиморфизм_в_python_ex2"
+      },
+      {
+        "code": "class Shape:\n    def draw(self):\n        pass\n\nclass Circle(Shape):\n    def draw(self):\n        return 'Drawing a circle'\n\nclass Square(Shape):\n    def draw(self):\n        return 'Drawing a square'\n\nclass Triangle(Shape):\n    def draw(self):\n        return 'Drawing a triangle'\n\nshapes = [Circle(), Square(), Triangle()]\nfor shape in shapes:\n    print(shape.draw())",
+        "hidden_explanation": "Данный пример также демонстрирует полиморфизм через перегрузку методов. Здесь у нас есть базовый класс Shape с методом draw, который перегружается в классах Circle, Square и Triangle для отображения соответствующей фигуры. При создании списка shapes с объектами Circle, Square и Triangle и последующем вызове метода draw для каждого объекта, мы получаем сообщения о рисовании различных фигур.",
+        "expected_concepts": [
+          "Полиморфизм через перегрузку методов",
+          "Перегрузка методов в подклассах",
+          "Использование списка объектов для демонстрации полиморфизма",
+          "Вызов методов унаследованных классов"
+        ],
+        "id": "полиморфизм_в_python_ex3"
+      },
+      {
+        "code": "from abc import ABC, abstractmethod\n\nclass Animal(ABC):\n    @abstractmethod\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return 'Woof!'\n\nclass Cat(Animal):\n    def speak(self):\n        return 'Meow!'\n\nanimals = [Dog(), Cat()]\nfor animal in animals:\n    print(animal.speak())",
+        "hidden_explanation": "Этот пример также иллюстрирует полиморфизм через абстрактные базовые классы (ABC). У нас есть абстрактный класс Animal с абстрактным методом speak, который переопределяется в классах Dog и Cat для издания соответствующих звуков. При создании списка animals с объектами Dog и Cat и вызове метода speak для каждого объекта, мы получаем соответствующие звуки 'Woof!' и 'Meow!'.",
+        "expected_concepts": [
+          "Полиморфизм через абстрактные базовые классы (ABC)",
+          "Абстрактные методы и классы",
+          "Переопределение методов в подклассах",
+          "Использование списка объектов для демонстрации полиморфизма"
+        ],
+        "id": "полиморфизм_в_python_ex4"
+      },
+      {
+        "code": "class Musician:\n    def play_instrument(self):\n        pass\n\nclass Guitarist(Musician):\n    def play_instrument(self):\n        return 'Playing the guitar'\n\nclass Pianist(Musician):\n    def play_instrument(self):\n        return 'Playing the piano'\n\nmusicians = [Guitarist(), Pianist()]\nfor musician in musicians:\n    print(musician.play_instrument())",
+        "hidden_explanation": "Этот пример демонстрирует полиморфизм через перегрузку методов в классах Musician, Guitarist и Pianist. У нас есть базовый класс Musician с методом play_instrument, который перегружается в подклассах Guitarist и Pianist для воспроизведения соответствующего инструмента. Создается список musicians с объектами Guitarist и Pianist, после чего метод play_instrument вызывается для каждого объекта и выводится сообщение о том, какой инструмент играет музыкант.",
+        "expected_concepts": [
+          "Полиморфизм через перегрузку методов",
+          "Наследование и перегрузка методов",
+          "Использование списка объектов для демонстрации полиморфизма",
+          "Вызов методов унаследованных классов"
+        ],
+        "id": "полиморфизм_в_python_ex5"
+      }
+    ]
+  }
+}

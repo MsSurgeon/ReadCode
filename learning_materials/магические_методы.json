@@ -1,0 +1,90 @@
+{
+  "topic": "Магические методы в Python",
+  "introduction": "Магические методы в Python позволяют определить специальное поведение объектов в различных контекстах. Они начинаются и заканчиваются двойным подчеркиванием (dunder) и позволяют настраивать строковое представление объекта, операции сравнения, арифметические действия и другие аспекты. Понимание и использование магических методов позволяет создавать более гибкие и мощные классы в Python.",
+  "theory": {
+    "overview": "Магические методы - это специальные методы в Python, которые позволяют определить поведение объектов в различных контекстах. Они начинаются и заканчиваются двойным подчеркиванием и позволяют настраивать различные аспекты объекта, такие как строковое представление, сравнение, арифметические операции и итерация.",
+    "best_practices": [
+      "Используйте магические методы для определения поведения объектов в соответствии с их назначением.",
+      "Документируйте использование магических методов в своем коде для удобства понимания другими разработчиками.",
+      "Избегайте переопределения стандартных магических методов, если это необходимо для конкретного случая."
+    ],
+    "common_mistakes": [
+      "Неправильное использование магических методов может привести к неожиданному поведению объектов.",
+      "Избегайте излишней сложности при определении магических методов, придерживайтесь простоты и эффективности."
+    ]
+  },
+  "examples": [
+    {
+      "title": "Пример 1: Метод __str__",
+      "description": "Определение строкового представления объекта",
+      "code": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __str__(self):\n        return f'Point({self.x}, {self.y})'\n\np = Point(3, 4)\nprint(str(p))",
+      "explanation": "В данном примере мы определяем класс Point с методом __str__, который возвращает строковое представление объекта в виде 'Point(x, y)'. При вызове функции str() для объекта p мы получаем строку 'Point(3, 4)'."
+    },
+    {
+      "title": "Пример 2: Метод __eq__",
+      "description": "Определение операции сравнения объектов",
+      "code": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\np1 = Point(3, 4)\np2 = Point(3, 4)\nprint(p1 == p2)",
+      "explanation": "В этом примере мы определяем метод __eq__, который позволяет сравнивать два объекта класса Point по их координатам x и y. При сравнении объектов p1 и p2 мы получаем True, так как их координаты равны."
+    },
+    {
+      "title": "Пример 3: Метод __add__",
+      "description": "Определение операции сложения объектов",
+      "code": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __add__(self, other):\n        return Point(self.x + other.x, self.y + other.y)\n\np1 = Point(3, 4)\np2 = Point(1, 2)\nresult = p1 + p2\nprint(result.x, result.y)",
+      "explanation": "В данном примере мы определяем метод __add__, который позволяет складывать два объекта класса Point покоординатно. При сложении объектов p1 и p2 мы получаем новый объект с координатами (4, 6)."
+    }
+  ],
+  "practice_examples": {
+    "examples": [
+      {
+        "code": "class Fraction:\n    def __init__(self, numerator, denominator):\n        self.numerator = numerator\n        self.denominator = denominator\n    \n    def __repr__(self):\n        return f'{self.numerator}/{self.denominator}'\n\nf = Fraction(3, 4)\nprint(repr(f))",
+        "hidden_explanation": "Этот код определяет класс Fraction для представления дробей. Метод __init__ инициализирует числитель и знаменатель дроби, а метод __repr__ возвращает строковое представление дроби в формате 'числитель/знаменатель'.",
+        "expected_concepts": [
+          "Методы инициализации объекта",
+          "Методы представления объекта в виде строки",
+          "Магические методы"
+        ],
+        "id": "магические_методы_в_python_ex1"
+      },
+      {
+        "code": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __lt__(self, other):\n        return self.x**2 + self.y**2 < other.x**2 + other.y**2\n\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\nprint(v1 < v2)",
+        "hidden_explanation": "Этот код определяет класс Vector для представления векторов в двумерном пространстве. Метод __init__ инициализирует координаты вектора, а метод __lt__ определяет операцию меньше для сравнения векторов по их длине.",
+        "expected_concepts": [
+          "Методы инициализации объекта",
+          "Методы сравнения объектов",
+          "Магические методы"
+        ],
+        "id": "магические_методы_в_python_ex2"
+      },
+      {
+        "code": "class Person:\n    def __init__(self, name):\n        self.name = name\n    \n    def __eq__(self, other):\n        return self.name == other.name\n\np1 = Person('Alice')\np2 = Person('Alice')\nprint(p1 == p2)",
+        "hidden_explanation": "Этот код определяет класс Person для представления людей. Метод __init__ инициализирует имя человека, а метод __eq__ определяет операцию равенства для сравнения людей по их имени.",
+        "expected_concepts": [
+          "Методы инициализации объекта",
+          "Методы сравнения объектов",
+          "Магические методы"
+        ],
+        "id": "магические_методы_в_python_ex3"
+      },
+      {
+        "code": "class Book:\n    def __init__(self, title, author):\n        self.title = title\n        self.author = author\n    \n    def __str__(self):\n        return f'{self.title} by {self.author}'\n\nb = Book('Python Crash Course', 'Eric Matthes')\nprint(str(b))",
+        "hidden_explanation": "Этот код определяет класс Book для представления книг. Метод __init__ инициализирует название и автора книги, а метод __str__ возвращает строковое представление книги в формате 'название by автор'.",
+        "expected_concepts": [
+          "Методы инициализации объекта",
+          "Методы представления объекта в виде строки",
+          "Магические методы"
+        ],
+        "id": "магические_методы_в_python_ex4"
+      },
+      {
+        "code": "class Matrix:\n    def __init__(self, matrix):\n        self.matrix = matrix\n    \n    def __add__(self, other):\n        result = []\n        for i in range(len(self.matrix)):\n            row = [x + y for x, y in zip(self.matrix[i], other.matrix[i])]\n            result.append(row)\n        return Matrix(result)\n\nm1 = Matrix([[1, 2], [3, 4]])\nm2 = Matrix([[5, 6], [7, 8]])\nresult = m1 + m2\nprint(result.matrix)",
+        "hidden_explanation": "Этот код определяет класс Matrix для представления матриц. Метод __init__ инициализирует матрицу, а метод __add__ определяет операцию сложения матриц поэлементно.",
+        "expected_concepts": [
+          "Методы инициализации объекта",
+          "Методы операций с объектами",
+          "Магические методы"
+        ],
+        "id": "магические_методы_в_python_ex5"
+      }
+    ]
+  }
+}

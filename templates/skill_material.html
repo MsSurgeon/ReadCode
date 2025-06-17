@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="skill-page">
+    <div class="learning-material">
+        <h2>{{ material.topic }}</h2>
+
+        <div class="introduction">
+            <h3>Введение</h3>
+            <p>{{ material.introduction }}</p>
+        </div>
+
+        <div class="theory">
+            <h3>Теория</h3>
+            <h4>Обзор</h4>
+            <p>{{ material.theory.overview }}</p>
+
+            <h4>Лучшие практики</h4>
+            <ul>
+                {% for practice in material.theory.best_practices %}
+                    <li>{{ practice }}</li>
+                {% endfor %}
+            </ul>
+
+            <h4>Распространенные ошибки</h4>
+            <ul>
+                {% for mistake in material.theory.common_mistakes %}
+                    <li>{{ mistake }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="examples">
+            <h3>Примеры</h3>
+            {% for example in material.examples %}
+                <div class="example">
+                    <h4>{{ example.title }}</h4>
+                    <p>{{ example.description }}</p>
+                    <pre><code>{{ example.code }}</code></pre>
+                    <p>{{ example.explanation }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="next-actions">
+            <a href="{{ url_for('practice', skill_name=progress.current_skill) }}" class="btn primary">Перейти к практике</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

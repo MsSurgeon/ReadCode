@@ -1,0 +1,34 @@
+<div class="progress-dashboard">
+    <h2>Ваш прогресс</h2>
+
+    <div class="stats">
+        <div class="stat-item">
+            <h3>Степень завершения навыка</h3>
+            <div class="progress-bar">
+                {% set skill_completion_rate = (completed_exercises_in_skill / total_exercises_in_skill * 100)|round if total_exercises_in_skill > 0 else 0 %}
+                <div class="progress" style="width: {{ skill_completion_rate }}%;">{{ skill_completion_rate }}% ({{ completed_exercises_in_skill }}/{{ total_exercises_in_skill }})</div>
+            </div>
+        </div>
+
+        <div class="stat-item">
+            <h3>Средний показатель успеха</h3>
+            {% if progress.success_rate and progress.success_rate.values()|list|length > 0 %}
+                {% set avg_success = progress.success_rate.values()|list|sum / progress.success_rate.values()|list|length %}
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ avg_success|round }}%;">{{ avg_success|round }}%</div>
+                </div>
+            {% else %}
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;">0%</div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="stat-item">
+            <h3>Выполненные упражнения</h3>
+            <p>{{ progress.completed_exercises.values()|sum if progress.completed_exercises else 0 }}</p>
+        </div>
+    </div>
+
+    <canvas id="progressChart"></canvas>
+</div>
